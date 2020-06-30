@@ -72,7 +72,7 @@ class EditCommand extends AbstractMagentoCommand
     protected function editTaxRate(
         OutputInterface $output,
         Mage_Tax_Model_Calculation_Rate $taxRate,
-        float $newRate,
+        $newRate,
         $updateTitles = false
     ) {
         if (!$taxRate->getId()) {
@@ -99,7 +99,7 @@ class EditCommand extends AbstractMagentoCommand
         return true;
     }
 
-    protected function updateTitlesForTaxRate(Mage_Tax_Model_Calculation_Rate $taxRate, int $newRate)
+    protected function updateTitlesForTaxRate(Mage_Tax_Model_Calculation_Rate $taxRate, $newRate)
     {
         // assumption: everyone writes the tax rate without decimal places in their code / title
         $oldRate = (int)$taxRate->getRate();
