@@ -1,7 +1,7 @@
 {
     "name": "customgento/magerun-tax-editor",
     "description": "n98-magerun module to edit the tax configuration.",
-    "type": "library",
+    "type": "magento-module",
     "require": {
         "n98/magerun": "^1.103",
         "php": "~7.0||~7.1||~7.2||~7.3||~7.4"
