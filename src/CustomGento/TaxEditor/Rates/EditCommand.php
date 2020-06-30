@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 
 namespace CustomGento\TaxEditor\Rates;
 
@@ -16,11 +15,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class EditCommand extends AbstractMagentoCommand
 {
-    private const OPTION_UPDATE_TITLES = 'update-titles';
-    private const OPTION_IDS = 'ids';
-    private const OPTION_RATE = 'rate';
+    const OPTION_UPDATE_TITLES = 'update-titles';
+    const OPTION_IDS = 'ids';
+    const OPTION_RATE = 'rate';
 
-    protected function configure(): void
+    protected function configure()
     {
         $this
             ->setName('tax:rates:edit')
@@ -45,7 +44,7 @@ class EditCommand extends AbstractMagentoCommand
             );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->detectMagento($output);
         if (!$this->initMagento()) {
@@ -74,8 +73,8 @@ class EditCommand extends AbstractMagentoCommand
         OutputInterface $output,
         Mage_Tax_Model_Calculation_Rate $taxRate,
         float $newRate,
-        bool $updateTitles = false
-    ): bool {
+        $updateTitles = false
+    ) {
         if (!$taxRate->getId()) {
             $warning = '<warning>A tax rate with the ID %d does not exist.</warning>';
             $output->writeln(sprintf($warning, [$taxRate->getId()]));
@@ -100,7 +99,7 @@ class EditCommand extends AbstractMagentoCommand
         return true;
     }
 
-    protected function updateTitlesForTaxRate(Mage_Tax_Model_Calculation_Rate $taxRate, int $newRate): void
+    protected function updateTitlesForTaxRate(Mage_Tax_Model_Calculation_Rate $taxRate, int $newRate)
     {
         // assumption: everyone writes the tax rate without decimal places in their code / title
         $oldRate = (int)$taxRate->getRate();
